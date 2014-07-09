@@ -119,7 +119,9 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					18: []string{ 
+					21: []string{ 
+						"accountEmail",
+						"wifiName",
 					},
 				},
 			},
@@ -128,7 +130,7 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					22: []string{ 
+					25: []string{ 
 					},
 				},
 			},

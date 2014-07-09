@@ -5,5 +5,12 @@ import (
 )
 
 func main() {
-	config.AccountEmail();
+	/*
+	d1 := config.ReadAccountEmail();
+	config.WriteAccountEmail("teste@teste.com");
+	d2 := config.ReadAccountEmail();
+	fmt.Println(d1)
+	fmt.Println(d2)
+	*/
+	config.ListNetWorksAvailable()
 }

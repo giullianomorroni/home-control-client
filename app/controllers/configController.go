@@ -2,6 +2,7 @@ package controllers
 
 import (
 	cb "home-control-client/app/controllers/base"
+	model "home-control-client/app/models/config"
 	"github.com/robfig/revel"
 )
 
@@ -15,7 +16,9 @@ type (
 func init() { }
 
 func (this *Config) Index() revel.Result {
-	return this.Render();
+	accountEmail := model.ReadAccountEmail()
+	wifiName := model.ReadWiFiName()
+	return this.Render(accountEmail, wifiName);
 }
 
 func (this *Config) NewDevice() revel.Result {
