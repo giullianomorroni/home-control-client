@@ -2,10 +2,10 @@ package app
 
 import (
 	"github.com/robfig/revel"
+    "home-control-client/app/jobs"
 )
 
 //** PRIVATE FUNCTIONS
-
 func init() {
 	// Filters is the default set of global filters.
 	revel.Filters = []revel.Filter{
@@ -27,5 +27,7 @@ func init() {
 
 // initApp contains all application level initialization
 func initApp() {
-
+    c := cron.New()
+    c.AddFunc("0/10 * * * * *", jobs.MyJob())
+    c.Start();
 }
