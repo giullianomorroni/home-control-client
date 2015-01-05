@@ -3,6 +3,7 @@ package app
 import (
 	"github.com/robfig/revel"
     "home-control-client/app/jobs"
+    "github.com/robfig/cron"
 )
 
 //** PRIVATE FUNCTIONS
