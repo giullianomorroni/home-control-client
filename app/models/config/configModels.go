@@ -19,59 +19,68 @@ func filePath() (path string){
 	return "/opt/homecontrol/config/data.cfg"
 }
 
+func fileAccountPath() (path string){
+	return "/opt/homecontrol/config/account.cfg"
+}
+
 func holdHoleShit(err error) (){
 	if err != nil {
         panic(err)
     }
 }
 
-func readConfig() (content string) {
-	dat, err := ioutil.ReadFile(filePath())
+func readConfig(file string) (content string) {
+	dat, err := ioutil.ReadFile(file)
 	holdHoleShit(err)
     config := string(dat)
     return config
 }
 
+func ReadAccount() (content string) {
+	data := readConfig(fileAccountPath())
+	return data
+}
+
 func ReadAccountEmail() (content string) {
-	data := strings.Split(readConfig(), "#")
+	data := strings.Split(readConfig(filePath()), "#")
 	return data[0]
 }
 
 func ReadAccountPassword() (content string) {
-	data := strings.Split(readConfig(), "#")
+	data := strings.Split(readConfig(filePath()), "#")
 	return data[1]
 }
 
 func ReadWiFiName() (content string) {
-	data := strings.Split(readConfig(), "#")
+	data := strings.Split(readConfig(filePath()), "#")
 	return data[2]
 }
 
 func ReadWiFiPassword() (content string) {
-	data := strings.Split(readConfig(), "#")
+	data := strings.Split(readConfig(filePath()), "#")
 	return data[3]
 }
 
 func WriteAccountEmail(content string) () {
-	data := strings.Split(readConfig(), "#")
+	data := strings.Split(readConfig(filePath()), "#")
 	data[0] = content ;
 	write(0, data)
 }
 
 func WriteAccountPassword(content string) () {
-	data := strings.Split(readConfig(), "#")
+	data := strings.Split(readConfig(filePath()), "#")
 	data[1] = content ;
 	write(1, data)
 }
 
 func WriteWiFiName(content string) () {
-	data := strings.Split(readConfig(), "#")
+	data := strings.Split(readConfig(filePath()), "#")
 	data[2] = content ;
 	write(2, data)
 }
 
 func WriteWiFiPassword(content string) () {
-	data := strings.Split(readConfig(), "#")
+	data := strings.Split(readConfig(filePath()), "#")
 	data[3] = content ;
 	write(3, data)
 }
@@ -95,4 +104,3 @@ func ListNetWorksAvailable() (data []string){
 
 	return data;
 }
-
