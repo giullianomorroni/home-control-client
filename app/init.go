@@ -2,7 +2,7 @@ package app
 
 import (
 	"github.com/robfig/revel"
-    "home-control-client/app/jobs"
+    job "home-control-client/app/jobs"
     "github.com/robfig/cron"
 )
 
@@ -29,6 +29,6 @@ func init() {
 // initApp contains all application level initialization
 func initApp() {
     c := cron.New()
-    c.AddFunc("0/10 * * * * *", jobs.MyJob())
+    c.AddFunc("0/10 * * * * *", job.MyJob)
     c.Start();
 }

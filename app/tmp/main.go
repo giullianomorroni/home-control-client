@@ -5,15 +5,12 @@ import (
 	"flag"
 	"reflect"
 	"github.com/robfig/revel"
-	_ "github.com/revel/revel/modules/jobs/app/controllers"
-	_ "github.com/revel/revel/modules/jobs/app/jobs"
 	controllers "github.com/robfig/revel/modules/static/app/controllers"
 	_ "github.com/robfig/revel/modules/testrunner/app"
 	controllers0 "github.com/robfig/revel/modules/testrunner/app/controllers"
 	_ "home-control-client/app"
 	controllers1 "home-control-client/app/controllers"
 	controllerBase "home-control-client/app/controllers/base"
-	_ "home-control-client/app/jobs"
 )
 
 var (

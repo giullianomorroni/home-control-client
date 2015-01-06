@@ -2,11 +2,8 @@ package services
 
 import (
 	"github.com/tarm/goserial"
-	"github.com/robfig/revel"
 	"log"
 	"time"
-	"io/ioutil"
-	"net/http"
 )
 
 /*
@@ -64,23 +61,7 @@ func main() {
 }
 */
 
-/*
-*  updates a device from a job @seeHttpGetStatus
-*/
-func LookUpUpdates(account string) {
-	response, err := http.Get("localhost:9000/comandos?account="+account)
-    if err != nil {
-        revel.TRACE.Printf("%s", err)
-    } else {
-        defer response.Body.Close()
-        contents, err := ioutil.ReadAll(response.Body)
-        if err != nil {
-            revel.TRACE.Printf("%s", err)
-        }
-        revel.TRACE.Printf("%s", string(contents))
-        UpdateDeviceStatus("$start" + string(contents));
-    }
-}
+
 
 /*
 * send data to raspberry
