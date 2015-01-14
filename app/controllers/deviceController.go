@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	cb "home-control/app/controllers/base"
+	cb "home-control-client/app/controllers/base"
 )
 
 type (
