@@ -1,0 +1,100 @@
+/* 
+/ fisrt sequence is command
+/  '!' ip address
+/ '@' uuid
+/ '#' master
+*/
+
+char data[80];
+
+char commandData[10];
+char ipAddressData[20];
+char masterData[20];
+char uuidData[20];
+
+char inChar; // Where to store the character read
+byte index = 0; // Index into array; where to store the character
+
+int dataReceived = 0;
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+    index = 0;
+    while(Serial.available() > 0)  {
+        inChar = Serial.read();
+        data[index] = inChar;
+        index++;
+        delay(100);
+        dataReceived=1;
+    }
+
+    if (dataReceived == 1){
+        dataReceived = 0;
+
+        int commandCount=0;
+        int ipAddressCount=0;
+        int masterCount=0;
+        int uuidCount=0;
+        
+        int commandKeep = 1;
+        int ipAddressKeep = 0;
+        int uuidKeep = 0;
+        int masterKeep = 0;
+        
+        for(int x=0; x<80; x++){
+            char v= data[x];
+            if(v == '!') {
+                ipAddressKeep = 1;
+                commandKeep = 0;
+                uuidKeep = 0;
+                masterKeep =0;
+            } else if(v == '@') {
+                uuidKeep = 1;
+                commandKeep = 0;
+                ipAddressKeep = 0;
+                masterKeep =0;
+            } else if(v == '#') {
+                masterKeep = 1;
+                uuidKeep = 0;
+                commandKeep = 0;
+                ipAddressKeep = 0;
+            } else if(v == '$') {
+                break;
+            }
+            
+            if (ipAddressKeep == 1) {
+                ipAddressData[ipAddressCount] = v;
+                ipAddressCount++;
+            } 
+            if(uuidKeep == 1) {
+                uuidData[uuidCount] = v;
+                uuidCount++;
+            } 
+            if(masterKeep == 1) {
+                masterData[masterCount] = v;
+                masterCount++;
+            } 
+            if(commandKeep == 1) {
+                commandData[commandCount] = v;
+                commandCount++;
+            }
+        }
+    
+        Serial.println("Command");
+        Serial.println(commandData);
+
+        Serial.println("IP ADDRESS");
+        Serial.println(ipAddressData);
+
+        Serial.println("UUID");
+        Serial.println(uuidData);
+
+        Serial.println("Master");
+        Serial.println(masterData);
+
+        delay(100);
+    }
+}
