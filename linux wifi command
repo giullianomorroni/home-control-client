@@ -1,0 +1,10 @@
+#comandos
+http://www.ghacks.net/2009/04/14/connect-to-a-wireless-network-via-command-line/
+
+#habiltar comandos
+http://www.cyberciti.biz/tips/allow-a-normal-user-to-run-commands-as-root.html
+
+
+editar /etc/profile
+
+adicionar /sbin no path

@@ -112,6 +112,11 @@ func main() {
 			
 		})
 	
+	revel.RegisterController((*controllers1.Device)(nil),
+		[]*revel.MethodType{
+			
+		})
+	
 	revel.RegisterController((*controllers1.Config)(nil),
 		[]*revel.MethodType{
 			&revel.MethodType{
