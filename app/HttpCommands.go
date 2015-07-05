@@ -4,10 +4,12 @@ import (
 	"io/ioutil"
 	"net/http"
 	"fmt"
+	"strings"
 )
 
 func LookUpUpdates(account string) (string) {
-	response, err := http.Get("http://controlinside.com.br/comandos/"+account)
+	url := "http://controlinside.com.br/comandos/"+strings.TrimSpace(account)	
+response, err := http.Get(url)
 	defer response.Body.Close()
     if err != nil {
         fmt.Println(err)

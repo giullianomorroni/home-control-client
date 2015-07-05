@@ -13,7 +13,7 @@ func UpdateDeviceStatus(command, account string) () {
 	if command == "$start" {
 		return;
 	}
-	fmt.Println("Command: "+command);
+	fmt.Println("Executing Command: "+command);
 	c := &serial.Config{Name: "/dev/ttyACM0", Baud: 115200}
 
 	s, err := serial.OpenPort(c)
@@ -23,12 +23,12 @@ func UpdateDeviceStatus(command, account string) () {
 	}
 
 	s.Write([]byte("$#"))
-	time.Sleep(1000 * time.Millisecond)
-	s.Write([]byte(command))
-	time.Sleep(1000 * time.Millisecond)
-	s.Write([]byte("$#"))
-	time.Sleep(1000 * time.Millisecond)
-	s.Write([]byte("$#"))
 	time.Sleep(2000 * time.Millisecond)
+	s.Write([]byte(command))
+	time.Sleep(500 * time.Millisecond)
+	s.Write([]byte("$#"))
+	//time.Sleep(1000 * time.Millisecond)
+	//s.Write([]byte("$#"))
+	//time.Sleep(1000 * time.Millisecond)
 	fmt.Println("Everything executed");
 }
